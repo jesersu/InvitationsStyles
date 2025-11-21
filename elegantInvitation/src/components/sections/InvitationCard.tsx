@@ -13,17 +13,19 @@ export const InvitationCard: React.FC<InvitationCardProps> = ({
   title = "¡Nos casamos!",
   couple = { bride: "Novia", groom: "Novio" },
   subtitle = "y",
-  topImageSrc = "/flower-top.png",
-  bottomImageSrc = "/flower-bottom.png",
-  backgroundImageSrc = "/bg-invitation.jpg",
+  topImageSrc,
+  bottomImageSrc,
+  backgroundImageSrc,
 }) => {
   return (
     <div className="relative w-full max-w-2xl aspect-[3/4] mx-auto rounded-xl shadow-2xl overflow-hidden bg-white">
       {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-20"
-        style={{ backgroundImage: `url(${backgroundImageSrc})` }}
-      />
+      {backgroundImageSrc && (
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: `url(${backgroundImageSrc})` }}
+        />
+      )}
 
       {/* Top floral decoration */}
       <div className="absolute left-0 right-0 top-0 pointer-events-none select-none z-10 -mt-4">

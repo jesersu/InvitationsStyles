@@ -1,10 +1,7 @@
-import React, { createContext, useState, type ReactNode } from 'react';
-import type { Wedding, WeddingContextType } from '../types';
+import React, { useState, useCallback, type ReactNode } from 'react';
+import type { Wedding } from '../types';
+import { WeddingContext } from './wedding';
 import { invitationService } from '../services/invitationService';
-
-export const WeddingContext = createContext<WeddingContextType | undefined>(
-  undefined
-);
 
 interface WeddingProviderProps {
   children: ReactNode;
@@ -15,7 +12,7 @@ export const WeddingProvider: React.FC<WeddingProviderProps> = ({ children }) =>
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchWedding = async (id: string) => {
+  const fetchWedding = useCallback(async (id: string) => {
     try {
       setLoading(true);
       setError(null);
@@ -24,7 +21,7 @@ export const WeddingProvider: React.FC<WeddingProviderProps> = ({ children }) =>
       try {
         const data = await invitationService.getWedding(id);
         setWedding(data);
-      } catch (apiError) {
+      } catch {
         console.warn('Failed to fetch from API, using mock data');
         const mockData = invitationService.getMockWedding();
         setWedding(mockData);
@@ -35,7 +32,7 @@ export const WeddingProvider: React.FC<WeddingProviderProps> = ({ children }) =>
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   return (
     <WeddingContext.Provider value={{ wedding, loading, error, fetchWedding }}>

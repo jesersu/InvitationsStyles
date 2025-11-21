@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
 import { useWedding } from '../hooks/useWedding';
-import {
-  CoverPage,
-  InvitationCard,
-  CountdownTimer,
-  LocationCard,
-  ConfirmAttendanceCard,
-} from '../components/sections';
+import { CoverPage } from '../components/sections';
 
 const InvitationPage: React.FC = () => {
   const { wedding, loading, error, fetchWedding } = useWedding();
@@ -50,7 +44,7 @@ const InvitationPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-amber-50 to-white">
+    <div className="">
       {/* Cover page overlay */}
       <CoverPage
         title={`${wedding.groomName} & ${wedding.brideName}`}
@@ -58,33 +52,33 @@ const InvitationPage: React.FC = () => {
         coupleImageSrc={wedding.coverImage}
         backgroundSrc={wedding.backgroundImage}
         onOpen={() => {}}
-        rememberOpen={true}
+        rememberOpen={false}
       />
 
       {/* Main content */}
       <main className="max-w-4xl mx-auto py-12 px-4 space-y-12">
         {/* Invitation Card */}
-        <InvitationCard
+        {/* <InvitationCard
           title="¡Nos casamos!"
           couple={{ groom: wedding.groomName, bride: wedding.brideName }}
           subtitle="y"
-        />
+        /> */}
 
         {/* Wedding Message */}
-        {wedding.message && (
+        {/* {wedding.message && (
           <div className="text-center py-8 px-4">
             <p className="text-lg text-gray-700 italic">{wedding.message}</p>
           </div>
-        )}
+        )} */}
 
         {/* Countdown Timer */}
-        <CountdownTimer
+        {/* <CountdownTimer
           targetDate={wedding.date}
           title="Cuenta regresiva para nuestra boda"
-        />
+        /> */}
 
         {/* Events/Locations */}
-        {wedding.events.map((event) => (
+        {/* {wedding.events.map((event) => (
           <LocationCard
             key={event.id}
             title={event.name}
@@ -96,18 +90,18 @@ const InvitationPage: React.FC = () => {
             mapUrl={event.mapUrl}
             icon={event.icon}
           />
-        ))}
+        ))} */}
 
         {/* Dress Code Info */}
-        <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+        {/* <div className="bg-white rounded-lg shadow-lg p-8 text-center">
           <h3 className="text-2xl font-bold text-rose-600 mb-2">
             Código de Vestimenta
           </h3>
           <p className="text-3xl font-bold text-gray-700">{wedding.dresscode}</p>
-        </div>
+        </div> */}
 
         {/* Bank Accounts */}
-        {wedding.bankAccounts.length > 0 && (
+        {/* {wedding.bankAccounts.length > 0 && (
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h3 className="text-2xl font-bold text-rose-600 mb-6 text-center">
               Datos Bancarios
@@ -131,19 +125,19 @@ const InvitationPage: React.FC = () => {
               ))}
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Confirm Attendance */}
-        <ConfirmAttendanceCard weddingId={wedding.id} />
+        {/* <ConfirmAttendanceCard weddingId={wedding.id} /> */}
 
         {/* Footer */}
-        <div className="text-center py-8 text-gray-600">
+        {/* <div className="text-center py-8 text-gray-600">
           <p>¡Gracias por ser parte de nuestra historia!</p>
           <p className="text-sm mt-2">
             Con amor,<br />
             {wedding.groomName} & {wedding.brideName}
           </p>
-        </div>
+        </div> */}
       </main>
     </div>
   );

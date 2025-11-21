@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../ui';
+import styles from './CoverPage.module.css';
 
 interface CoverPageProps {
   title: string;
@@ -18,12 +19,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({
   onOpen,
   rememberOpen = false,
 }) => {
-  const [isOpen, setIsOpen] = useState(() => {
-    if (rememberOpen && typeof localStorage !== 'undefined') {
-      return localStorage.getItem('invitationOpened') === 'true';
-    }
-    return false;
-  });
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -37,25 +33,21 @@ export const CoverPage: React.FC<CoverPageProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: `url(${backgroundSrc})` }}
+      className={styles.coverContainer}
+      style={{ '--bg-image': `url(${backgroundSrc})` } as React.CSSProperties}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-40" />
+      <div className={styles.overlay} />
 
-      <div className="relative z-10 text-center px-4 flex flex-col items-center justify-center min-h-screen">
-        <div className="mb-8">
-          <img
-            src={coupleImageSrc}
-            alt="Couple"
-            className="w-48 h-48 rounded-full border-4 border-white shadow-lg object-cover"
-          />
-        </div>
+      <div className={styles.content}>
+        <img
+          src={coupleImageSrc}
+          alt="Couple"
+          className={styles.coupleImage}
+        />
 
-        <h1 className="text-5xl font-bold text-white mb-2 drop-shadow-lg">
-          {title}
-        </h1>
+        <h1 className={styles.title}>{title}</h1>
 
-        <p className="text-2xl text-rose-200 mb-12 drop-shadow-lg">{subtitle}</p>
+        <p className={styles.subtitle}>{subtitle}</p>
 
         <Button
           onClick={handleOpen}
