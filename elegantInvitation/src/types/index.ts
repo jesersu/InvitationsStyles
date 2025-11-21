@@ -23,6 +23,7 @@ export interface Wedding {
   date: string;
   coverImage: string;
   backgroundImage: string;
+  backgroundImageMobile?: string;
   events: WeddingEvent[];
   bankAccounts: BankAccount[];
   dresscode: string;

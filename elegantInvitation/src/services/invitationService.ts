@@ -1,7 +1,8 @@
 import { apiClient } from './apiClient';
 import type { Wedding } from '../types';
-import coupleImage from '../assets/couple-7.png';
-import backgroundImage from '../assets/bg-web-2.jpg';
+import coupleImage from '../assets/cover-couple.png';
+import backgroundImageMobile from '../assets/bg-cover.png';
+import backgroundImageWeb from '../assets/cover-bg-web.png';
 
 export const invitationService = {
   async getWedding(id: string): Promise<Wedding> {
@@ -20,7 +21,8 @@ export const invitationService = {
       brideName: 'Johanna',
       date: '2025-11-08T11:00:00-05:00',
       coverImage: coupleImage,
-      backgroundImage: backgroundImage,
+      backgroundImage: backgroundImageWeb,
+      backgroundImageMobile: backgroundImageMobile,
       events: [
         {
           id: 'event_1',

@@ -51,6 +51,7 @@ const InvitationPage: React.FC = () => {
         subtitle="Te invitamos a nuestra boda"
         coupleImageSrc={wedding.coverImage}
         backgroundSrc={wedding.backgroundImage}
+        backgroundMobileSrc={wedding.backgroundImageMobile}
         onOpen={() => {}}
         rememberOpen={false}
       />
