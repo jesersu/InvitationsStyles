@@ -1,4 +1,4 @@
-import React, { useState, useCallback, type ReactNode } from 'react';
+import React, { useState, useCallback, useMemo, type ReactNode } from 'react';
 import type { Wedding } from '../types';
 import { WeddingContext } from './wedding';
 import { invitationService } from '../services/invitationService';
@@ -16,7 +16,7 @@ export const WeddingProvider: React.FC<WeddingProviderProps> = ({ children }) =>
     try {
       setLoading(true);
       setError(null);
-      
+
       // Try to fetch from API, fall back to mock data
       try {
         const data = await invitationService.getWedding(id);
@@ -34,8 +34,14 @@ export const WeddingProvider: React.FC<WeddingProviderProps> = ({ children }) =>
     }
   }, []);
 
+  // Memoize context value to prevent unnecessary re-renders of consumers
+  const value = useMemo(
+    () => ({ wedding, loading, error, fetchWedding }),
+    [wedding, loading, error, fetchWedding]
+  );
+
   return (
-    <WeddingContext.Provider value={{ wedding, loading, error, fetchWedding }}>
+    <WeddingContext.Provider value={value}>
       {children}
     </WeddingContext.Provider>
   );

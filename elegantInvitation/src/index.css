@@ -85,6 +85,97 @@ select {
   }
 }
 
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatImage {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.05);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.8s ease-out both;
+}
+
+.animate-floatImage {
+  animation: floatImage 3s ease-in-out infinite;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s ease-out 0.4s both;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-rotateIn {
+  animation: rotateIn 0.8s ease-out;
+}
+
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out;
 }
@@ -162,4 +253,284 @@ select {
   body {
     background: white;
   }
+}
+
+/* Couple names styling with Lavishly Yours font */
+.couple-names {
+  font-family: 'Lavishly Yours', cursive;
+  font-size: 4.5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 640px) {
+  .couple-names {
+    font-size: 3.0rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 767px) {
+  .couple-names {
+    font-size: 3.5rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* Button animations and effects */
+@keyframes buttonGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(244, 63, 94, 0.5), 0 10px 30px rgba(244, 63, 94, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(244, 63, 94, 0.8), 0 10px 40px rgba(244, 63, 94, 0.4);
+  }
+}
+
+@keyframes buttonBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.cover-button {
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.cover-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cover-button:active::before {
+  animation: ripple 0.6s ease-out;
+}
+
+/* Optional: Add glow effect on hover */
+.cover-button:hover {
+  animation: buttonGlow 1.5s ease-in-out infinite;
+}
+
+/* Optional: Add subtle bounce animation on entry */
+.cover-button {
+  animation: buttonBounce 0.6s ease-out 0.4s both;
+}
+
+/* Cover page button - specific styling */
+.cover-button-primary {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 20px rgba(244, 63, 94, 0.3),
+    0 0 60px rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cover-button-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.cover-button-primary:hover::before {
+  left: 100%;
+}
+
+.cover-button-primary:hover {
+  box-shadow: 
+    0 12px 30px rgba(244, 63, 94, 0.5),
+    0 0 80px rgba(244, 63, 94, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.cover-button-primary:active {
+  box-shadow: 
+    0 4px 15px rgba(244, 63, 94, 0.3),
+    inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon animations */
+.cover-button-primary span span:first-child {
+  animation: iconFloat 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Text effects */
+.cover-button-primary:hover span span:nth-child(2) {
+  animation: textGlow 0.6s ease-in-out;
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 0 transparent;
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 0 transparent;
+  }
+}
+
+/* Sparkle animation for the emoji */
+.cover-button-primary span span:last-child {
+  animation: sparkle 1s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(20deg);
+  }
+}
+
+/* Premium button styling */
+.cover-button-premium {
+  box-shadow: 
+    0 10px 25px rgba(244, 63, 94, 0.25),
+    0 0 40px rgba(244, 63, 94, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.cover-button-premium:hover {
+  box-shadow: 
+    0 15px 40px rgba(244, 63, 94, 0.4),
+    0 0 60px rgba(244, 63, 94, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.cover-button-premium:active {
+  box-shadow: 
+    0 8px 20px rgba(244, 63, 94, 0.3),
+    inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced animations for button elements */
+@keyframes buttonPulse {
+  0%, 100% {
+    opacity: 0.8;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  }
+}
+
+@keyframes envelopeFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-3px) scale(1.1);
+  }
+  75% {
+    transform: translateY(3px) scale(0.95);
+  }
+}
+
+@keyframes sparkleRotate {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg) scale(0.8);
+    opacity: 0.6;
+  }
+}
+
+/* Button glow animation on interaction */
+@keyframes buttonGlowPulse {
+  0%, 100% {
+    box-shadow: 
+      0 10px 25px rgba(244, 63, 94, 0.25),
+      0 0 40px rgba(244, 63, 94, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 15px 40px rgba(244, 63, 94, 0.4),
+      0 0 80px rgba(244, 63, 94, 0.3);
+  }
+}
+
+/* Apply animations to button content */
+.cover-button-premium span:first-of-type {
+  animation: envelopeFloat 2.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+.cover-button-premium span:last-of-type {
+  animation: sparkleRotate 3s linear infinite;
+  display: inline-block;
+}
+
+/* Hover state animation */
+.group:hover .cover-button-premium {
+  animation: buttonGlowPulse 1.5s ease-in-out infinite;
+}
+
+/* Button text letter-spacing animation */
+@keyframes letterSpacingExpand {
+  0%, 100% {
+    letter-spacing: 0.1em;
+  }
+  50% {
+    letter-spacing: 0.15em;
+  }
+}
+
+.cover-button-premium span:nth-child(2) {
+  animation: letterSpacingExpand 3s ease-in-out infinite;
+  display: inline-block;
 }
